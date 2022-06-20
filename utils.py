@@ -1,0 +1,4 @@
+load_candidates_from_json(path)
+get_candidate(candidate_id)
+get_candidates_by_name(candidate_name)
+get_candidates_by_skill(skill_name)
