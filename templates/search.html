@@ -1,3 +1,5 @@
-<h1>найдено кандидатов 2</h2>
-<p><a href="/candidate/<x>">Leo Black</a></p>
-<p><a href="/candidate/<x>">Leo Brown</a></p>
+<h1>найдено кандидатов {{num}}</h1>
+
+{% for item in items %}
+<p><a href="http://127.0.0.1:5000/candidate/{{item.id}}">{{item.name}}</a></p>
+{% endfor %}

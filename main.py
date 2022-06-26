@@ -1,31 +1,46 @@
-from flask import Flask, request, render_template
+from flask import Flask, render_template
 
+from utils import load_candidates_from_json, get_candidate, get_candidates_by_name, get_candidates_by_skill
 
 app = Flask(__name__)
 
-@app.route('/',)
+
+@app.route('/')
 def page_index():
-
-    page_content = """ 
-    <style>
-    h2 {color: green;}
-    </style>
-    <p> Hello </p>
-    <h2> OPS </h2>
-    <h1 style=" color: red">Hi</h1>
-
-    <form action="http://httpbin.org/get">
-        <input type="password" name="pass" value="12345">
-        <input type="submit" value="Отправить Дарине">
-        <input type="checkbox" name="subscribe">
-        <input type="checkbox" name="subscribe">
-        </br>
-        <textarea name="aboutme" >
-        Исходный текст тут
-        </textarea>
-    </form>
-    """
-    return page_content
+    return render_template('list.html', items=load_candidates_from_json())
 
 
-app.run('0.0.0.0', 5000)
+@app.route('/candidate/<idi>')
+def candidate(idi):
+    if idi == "8":
+        return render_template('anketa.html')
+    return render_template('single.html', data=get_candidate(idi))
+
+
+@app.route('/candidate/')
+def candidate_list():
+    return render_template('list.html', items=load_candidates_from_json())
+
+
+@app.route("/search/<name>")
+def searche_name(name):
+    return render_template("search.html", items=get_candidates_by_name(name), num=len(get_candidates_by_name(name)))
+
+
+@app.route("/search/")
+def search():
+    return render_template('list.html', items=load_candidates_from_json())
+
+
+@app.route("/skill/")
+def skill():
+    return render_template('list.html', items=load_candidates_from_json())
+
+
+@app.route("/skill/<skilll>")
+def skill_search(skilll):
+    return render_template('skill.html', items=get_candidates_by_skill(skilll), skill=skilll,
+                           num=len(get_candidates_by_skill(skilll)))
+
+
+app.run('127.0.0.1', 5000)

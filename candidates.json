@@ -46,7 +46,7 @@
   },
   {
     "id": 6,
-    "name": "Austin Cochran",
+    "name": "Day Cochran",
     "picture": "https://picsum.photos/200",
     "position": "python-develop",
     "gender": "male",
@@ -61,5 +61,11 @@
     "gender": "female",
     "age": 33,
     "skills": "Python, Django, flask"
+  },
+  {
+    "name": "Куся необыкновенный",
+    "id": 8,
+    "picture": "http://mypopugaj.ru/wp-content/uploads/2019/11/krasava.jpg",
+    "skills": "Красавчек"
   }
 ]

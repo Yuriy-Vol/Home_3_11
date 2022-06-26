@@ -1,3 +1,5 @@
 <h1>Все кандидаты</h1>
-<p><a href="/candidate/<x>">Имя кандидата</a></p>
-<p><a href="/candidate/<x>">Имя кандидата</a></p>
+
+{% for item in items %}
+<p><a href="http://127.0.0.1:5000/candidate/{{item.id}}">{{item.name}}</a></p>
+{% endfor %}
